@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT :Riot Games</title>
+    <link rel="icon" href="icon.jpg" type="image/x-icon">
+
+</head>
+<style>
+    body {
+        padding: 200px 450px;
+        background-color: lightyellow;
+        background-image: url(back3.jpg);
+        height: 580px;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+
+    .formdesign input {
+        width: 1000px;
+        padding: 12px 20px;
+        border: 3px solid lightseagreen;
+        margin: 14px;
+        border-radius: 4px;
+        font-size: 15px;
+
+    }
+
+    h1 {
+        color: #08f0f0;
+        text-align: center;
+    }
+
+    .formdesign {
+        color: rgb(247, 252, 0);
+        font-size: large;
+
+    }
+
+    .formdesign .fa {
+        position: absolute;
+        top: 950px;
+    }
+
+    .fa-times {
+        color: red;
+    }
+
+    .fa-times {
+        color: green;
+    }
+
+    #showpass {
+        width: 10px;
+    }
+
+    .button {
+        border-radius: 9px;
+        width: 100px;
+        height: 50px;
+        font-size: 25px;
+        margin: 22px 20px;
+
+    }
+</style>
+
+<body>
+    <div>
+        <h1>Welcome to ValorantInfo Login Webpage!</h1>
+        <!-- <div class="formdesign">
+            First Name: <input type="fname" name="fname" id="fname" placeholder="Your first name">
+        </div>
+        <br />
+        <div class="formdesign">
+            Last Name: <input type="lname" name="lname" id="lname" placeholder="Your last name">
+        </div>
+        <br /> -->
+        <!-- <div class="formdesign">
+            Email Id: <input type="email" name="email" id="email" onblur="ValidateEmail(this.id)"
+                placeholder="Your email">
+        </div>
+        <br /> -->
+        <div class="formdesign">
+            User Id: <input type="userid" name="userid" id="userid" placeholder="Your Gaming Id">
+            <i class="fa fa-times u_times"></i>
+            <i class="fa fa-check u_check"></i>
+
+        </div>
+        <div class="formdesign">
+            Password: <input type="password" name="password" id="password" placeholder="Your Password"
+                onblur="ValidatePassword(this.id)">
+            <input type="checkbox" id="showpass" onclick="Toggle()">Show Password
+        </div>
+        <!-- <br />
+        <div class="formdesign">
+            Confirm Password: <input type="password" name="cpassword" id="password" onkeyup="check(this)"
+                placeholder="Confirm Your Password">
+            <error id="alert"></error>
+
+        </div> -->
+        <br />
+        <a target="_blank" onclick="login(this)">
+            <button class="button">Login</button>
+
+        </a>
+
+
+
+    </div>
+    <script>
+        // var a = localStorage.getItem("abc");
+
+        // if (a == "save password") {
+        //     window.location.href = "home.html";
+        // }
+
+        async function login() {
+
+
+
+            var user = document.getElementById("userid").value;
+            var pass = document.getElementById("password").value;
+
+
+            var username = await localStorage.getItem(user);
+            if (username) {
+                const { user1, pass1 } = JSON.parse(username);
+                console.log(user, user1, pass, pass1);
+                if (user == user1 && pass == pass1) {
+
+                    window.location.href = "home.html";
+                    //console.log("SUCCESS!");
+                } else {
+                    alert("User Id or Password is incorrect")
+                }
+            } else {
+                alert("User not registered!")
+            }
+
+
+        }
+
+        function ValidateEmail(id) {
+            var element = document.getElementById(id);
+            var regExp = /^[a-zA-Z0-9._]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,4}$/;
+            if (!regExp.test(element.value)) {
+                alert("Enter valid email id.");
+                element.style.border = "4px solid red";
+                return false;
+            }
+            element.style.border = "4px solid green";
+            return true;
+        }
+
+
+        // function ValidateUser(id) {
+        //     var element = document.getElementById(id);
+        //     var regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,20}$/;
+        //     if (!regExp.test(element.value)) {
+        //         alert("Enter valid user id.");
+        //         element.style.border = "4px solid red";
+        //         return false;
+        //     }
+        //     element.style.border = "4px solid green";
+        //     return true;
+        // }
+
+        var user = document.querySelector('#userid');
+        user.addEventListener('keyup', function () {
+            var u_times = document.querySelector('.u_times');
+            var u_check = document.querySelector('.u_check');
+            if (user.value.length == 0 || user.value.length < 8) {
+                user.style.border = "4px solid red";
+                u_times.style.display = 'block';
+                u_check.style.display = 'none';
+
+            } else {
+                user.style.border = "4px solid green";
+                u_times.style.display = 'none';
+                u_check.style.display = 'block';
+            }
+
+        })
+        function Toggle() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+
+
+
+        function ValidatePassword(id) {
+            var element = document.getElementById(id);
+            var regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,}$/;
+            if (!regExp.test(element.value)) {
+                alert("Enter valid Password.");
+                element.style.border = "4px solid red";
+                return false;
+            }
+            element.style.border = "4px solid green";
+            return true;
+        }
+
+        var p = document.getElementById('password');
+        var flag = 1; // 1->no error 2-> error
+        function check(elem) {
+            if (elem.value.length > 0) {
+                if (elem.value != p.value) {
+                    document.getElementById('alert').innerText = "Confirm Password does not match.";
+                    flag = 0;
+                } else {
+                    document.getElementById('alert').innerText = "";
+                    flag = 1;
+                }
+
+
+            } else {
+                document.getElementById('alert').innerText = "Please enter Confirm Password."
+                flag = 0;
+            }
+
+        }
+        function Validatecp() {
+            if (flag == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
