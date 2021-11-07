@@ -51,6 +51,13 @@
         width: 10px;
     }
 
+    #reqd {
+        color: #00ff2a;
+        /*Red Color*/
+        text-align: center;
+        font-size: larger;
+    }
+
     .button {
         border-radius: 9px;
         width: 100px;
@@ -63,18 +70,22 @@
 <body>
     <div>
         <h1>Welcome to ValorantInfo Registration Webpage!</h1>
-        <form action="post">
-            <div class="formdesign">
-                First Name: <input type="text" name="fname" id="fname" placeholder="Your first name" required>
+        <form method="post" action="login.html" onsubmit="return checkReqFields()">
+            <div class=" formdesign">
+                <label for="name">First Name:</label>
+                <input type="text" name="fname" id="fname" placeholder="Your first name">
+                <error id="fuser"></error>
             </div>
             <br />
             <div class="formdesign">
-                Last Name: <input type="text" name="lname" id="lname" placeholder="Your last name" required>
+                Last Name: <input type="text" name="lname" id="lname" placeholder="Your last name" required />
+                <error id="luser"></error>
             </div>
             <br />
             <div class="formdesign">
                 Email Id: <input type="text" name="email" id="email" onblur="ValidateEmail(this.id)"
                     placeholder="Your email" required>
+
             </div>
             <br />
             <div class="formdesign">
@@ -94,7 +105,8 @@
                 <error id="alert"></error>
 
             </div>
-
+            <span id="reqd">***Please submit this form when all fields turn green and password matches with confirm
+                password***</span>
         </form>
 
         <br />
@@ -113,12 +125,13 @@
 
     </div>
     <script>
+
         var user = document.querySelector('#userid');
         user.addEventListener('keyup', function () {
             // var u_times = document.querySelector('.u_times');
             // var u_check = document.querySelector('.u_check');
             if (user.value.length < 8) {
-                document.getElementById('wuser').innerHTML = "User Id is not 8 characters long.";
+                document.getElementById('wuser').innerHTML = "*Required,User Id is not 8 characters long.";
                 user.style.border = "4px solid red";
                 // u_times.style.display = 'block';
                 // u_check.style.display = 'none';
@@ -136,12 +149,15 @@
         fname.addEventListener('keyup', function () {
             // var u_times = document.querySelector('.u_times');
             // var u_check = document.querySelector('.u_check');
-            if (fname.value.length == 0) {
+            if (fname.value.length < 3) {
+                document.getElementById('fuser').innerHTML = " *Required,Please Enter Your First Name.";
+
                 fname.style.border = "4px solid red";
                 // u_times.style.display = 'block';
                 // u_check.style.display = 'none';
 
             } else {
+                document.getElementById('fuser').innerHTML = " ";
                 fname.style.border = "4px solid green";
                 // u_times.style.display = 'none';
                 // u_check.style.display = 'block';
@@ -152,12 +168,14 @@
         lname.addEventListener('keyup', function () {
             // var u_times = document.querySelector('.u_times');
             // var u_check = document.querySelector('.u_check');
-            if (lname.value.length == 0) {
+            if (lname.value.length < 3) {
+                document.getElementById('luser').innerHTML = "*Required,Please Enter Your Last Name.";
                 lname.style.border = "4px solid red";
                 // u_times.style.display = 'block';
                 // u_check.style.display = 'none';
 
             } else {
+                document.getElementById('luser').innerHTML = " ";
                 lname.style.border = "4px solid green";
                 // u_times.style.display = 'none';
                 // u_check.style.display = 'block';
