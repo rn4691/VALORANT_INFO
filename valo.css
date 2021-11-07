@@ -4,6 +4,18 @@ body{
     color: #14fe17;
     background: #222420 !important;
 }
+.home_foot{
+    font-size: 20px;
+    text-align: center;
+}
+/* #logout{
+    text-align: left;
+    font-size: 20px;
+}
+#new_user{
+    text-align: right !important;
+    font-size: 20px;
+} */
 
 .navbar {
     border-bottom: 2px solid;
