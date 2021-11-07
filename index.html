@@ -79,6 +79,7 @@
             <br />
             <div class="formdesign">
                 User Id: <input type="text" name="userid" id="userid" placeholder="Your Gaming Id" required>
+                <error id="wuser"></error>
             </div>
             <br />
             <div class="formdesign">
@@ -116,16 +117,18 @@
         user.addEventListener('keyup', function () {
             // var u_times = document.querySelector('.u_times');
             // var u_check = document.querySelector('.u_check');
-            if (user.value.length == 0 || user.value.length < 8) {
-                alert("User Id should be minimum 8 characters")
+            if (user.value.length < 8) {
+                document.getElementById('wuser').innerHTML = "User Id is not 8 characters long.";
                 user.style.border = "4px solid red";
                 // u_times.style.display = 'block';
                 // u_check.style.display = 'none';
 
             } else {
                 user.style.border = "4px solid green";
+                document.getElementById('wuser').innerHTML = " ";
                 // u_times.style.display = 'none';
                 // u_check.style.display = 'block';
+                return true;
             }
 
         })

@@ -94,6 +94,8 @@
             User Id: <input type="userid" name="userid" id="userid" placeholder="Your Gaming Id">
             <i class="fa fa-times u_times"></i>
             <i class="fa fa-check u_check"></i>
+            <error id="wuser"></error>
+
 
         </div>
         <div class="formdesign">
@@ -182,17 +184,20 @@
 
         var user = document.querySelector('#userid');
         user.addEventListener('keyup', function () {
-            var u_times = document.querySelector('.u_times');
-            var u_check = document.querySelector('.u_check');
-            if (user.value.length == 0 || user.value.length < 8) {
+            // var u_times = document.querySelector('.u_times');
+            // var u_check = document.querySelector('.u_check');
+            if (user.value.length < 8) {
+                document.getElementById('wuser').innerHTML = "User Id is not 8 characters long.";
                 user.style.border = "4px solid red";
-                u_times.style.display = 'block';
-                u_check.style.display = 'none';
+                // u_times.style.display = 'block';
+                // u_check.style.display = 'none';
 
             } else {
                 user.style.border = "4px solid green";
-                u_times.style.display = 'none';
-                u_check.style.display = 'block';
+                document.getElementById('wuser').innerHTML = " ";
+                // u_times.style.display = 'none';
+                // u_check.style.display = 'block';
+                return true;
             }
 
         })
