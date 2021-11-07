@@ -59,31 +59,31 @@
     <div>
         <h1>Welcome to ValorantInfo Registration Webpage!</h1>
         <div class="formdesign">
-            First Name: <input type="fname" name="fname" id="fname" placeholder="Your first name">
+            First Name: <input type="fname" name="fname" id="fname" placeholder="Your first name" required>
         </div>
         <br />
         <div class="formdesign">
-            Last Name: <input type="lname" name="lname" id="lname" placeholder="Your last name">
+            Last Name: <input type="lname" name="lname" id="lname" placeholder="Your last name" required>
         </div>
         <br />
         <div class="formdesign">
             Email Id: <input type="email" name="email" id="email" onblur="ValidateEmail(this.id)"
-                placeholder="Your email">
+                placeholder="Your email" required>
         </div>
         <br />
         <div class="formdesign">
-            User Id: <input type="text" name="userid" id="userid" placeholder="Your Gaming Id">
+            User Id: <input type="text" name="userid" id="userid" placeholder="Your Gaming Id" required>
         </div>
         <br />
         <div class="formdesign">
             Password: <input type="password" name="password" id="password" placeholder="Your Password"
-                onblur="ValidatePassword(this.id)">
+                onblur="ValidatePassword(this.id)" required>
             <input type="checkbox" id="showpass" onclick="Toggle()">Show Password
         </div>
         <br />
         <div class="formdesign">
             Confirm Password: <input type="password" name="cpassword" id="cpassword" onkeyup="check(this)"
-                placeholder="Confirm Your Password">
+                placeholder="Confirm Your Password" required>
             <error id="alert"></error>
 
         </div>
