@@ -63,35 +63,39 @@
 <body>
     <div>
         <h1>Welcome to ValorantInfo Registration Webpage!</h1>
-        <div class="formdesign">
-            First Name: <input type="text" name="fname" id="fname" placeholder="Your first name" required>
-        </div>
-        <br />
-        <div class="formdesign">
-            Last Name: <input type="text" name="lname" id="lname" placeholder="Your last name" required>
-        </div>
-        <br />
-        <div class="formdesign">
-            Email Id: <input type="text" name="email" id="email" onblur="ValidateEmail(this.id)"
-                placeholder="Your email" required>
-        </div>
-        <br />
-        <div class="formdesign">
-            User Id: <input type="text" name="userid" id="userid" placeholder="Your Gaming Id" required>
-        </div>
-        <br />
-        <div class="formdesign">
-            Password: <input type="password" name="password" id="password" placeholder="Your Password"
-                onblur="ValidatePassword(this.id)" required>
-            <input type="checkbox" id="showpass" onclick="Toggle()">Show Password
-        </div>
-        <br />
-        <div class="formdesign">
-            Confirm Password: <input type="password" name="cpassword" id="cpassword" onkeyup="check(this)"
-                placeholder="Confirm Your Password" required>
-            <error id="alert"></error>
+        <form action="post">
+            <div class="formdesign">
+                First Name: <input type="text" name="fname" id="fname" placeholder="Your first name" required>
+            </div>
+            <br />
+            <div class="formdesign">
+                Last Name: <input type="text" name="lname" id="lname" placeholder="Your last name" required>
+            </div>
+            <br />
+            <div class="formdesign">
+                Email Id: <input type="text" name="email" id="email" onblur="ValidateEmail(this.id)"
+                    placeholder="Your email" required>
+            </div>
+            <br />
+            <div class="formdesign">
+                User Id: <input type="text" name="userid" id="userid" placeholder="Your Gaming Id" required>
+            </div>
+            <br />
+            <div class="formdesign">
+                Password: <input type="password" name="password" id="password" placeholder="Your Password"
+                    onblur="ValidatePassword(this.id)" required>
+                <input type="checkbox" id="showpass" onclick="Toggle()">Show Password
+            </div>
+            <br />
+            <div class="formdesign">
+                Confirm Password: <input type="password" name="cpassword" id="cpassword" onkeyup="check(this)"
+                    placeholder="Confirm Your Password" required>
+                <error id="alert"></error>
 
-        </div>
+            </div>
+
+        </form>
+
         <br />
         <button type="submit" onclick="signup(this)" class="button">SignUp</button>
 
@@ -108,22 +112,55 @@
 
     </div>
     <script>
-        // var user = document.querySelector('#userid');
-        // user.addEventListener('keyup', function () {
-        //     var u_times = document.querySelector('.u_times');
-        //     var u_check = document.querySelector('.u_check');
-        //     if (user.value.length == 0 || user.value.length < 8) {
-        //         user.style.border = "4px solid red";
-        //         // u_times.style.display = 'block';
-        //         // u_check.style.display = 'none';
+        var user = document.querySelector('#userid');
+        user.addEventListener('keyup', function () {
+            // var u_times = document.querySelector('.u_times');
+            // var u_check = document.querySelector('.u_check');
+            if (user.value.length == 0 || user.value.length < 8) {
+                alert("User Id should be minimum 8 characters")
+                user.style.border = "4px solid red";
+                // u_times.style.display = 'block';
+                // u_check.style.display = 'none';
 
-        //     } else {
-        //         user.style.border = "4px solid green";
-        //         u_times.style.display = 'none';
-        //         u_check.style.display = 'block';
-        //     }
+            } else {
+                user.style.border = "4px solid green";
+                // u_times.style.display = 'none';
+                // u_check.style.display = 'block';
+            }
 
-        // })
+        })
+        var fname = document.querySelector('#fname');
+        fname.addEventListener('keyup', function () {
+            // var u_times = document.querySelector('.u_times');
+            // var u_check = document.querySelector('.u_check');
+            if (fname.value.length == 0) {
+                fname.style.border = "4px solid red";
+                // u_times.style.display = 'block';
+                // u_check.style.display = 'none';
+
+            } else {
+                fname.style.border = "4px solid green";
+                // u_times.style.display = 'none';
+                // u_check.style.display = 'block';
+            }
+
+        })
+        var lname = document.querySelector('#lname');
+        lname.addEventListener('keyup', function () {
+            // var u_times = document.querySelector('.u_times');
+            // var u_check = document.querySelector('.u_check');
+            if (lname.value.length == 0) {
+                lname.style.border = "4px solid red";
+                // u_times.style.display = 'block';
+                // u_check.style.display = 'none';
+
+            } else {
+                lname.style.border = "4px solid green";
+                // u_times.style.display = 'none';
+                // u_check.style.display = 'block';
+            }
+
+        })
 
         function ValidateEmail(id) {
             var element = document.getElementById(id);
